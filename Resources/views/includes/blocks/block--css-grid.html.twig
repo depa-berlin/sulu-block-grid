@@ -1,0 +1,32 @@
+{% block content_button_grid %}
+    {% set block_id = content._id|default %}
+
+    {# Spalten nur bei override_layout #}
+    {% set col_styles = '' %}
+    {% if content.override_layout %}
+        {% if content.cols_default %}{% set col_styles = col_styles ~ '--css-grid-col:' ~ content.cols_default ~ ';' %}{% endif %}
+        {% if content.cols_sm %}{% set col_styles = col_styles ~ '--css-grid-sm-col:' ~ content.cols_sm ~ ';' %}{% endif %}
+        {% if content.cols_md %}{% set col_styles = col_styles ~ '--css-grid-md-col:' ~ content.cols_md ~ ';' %}{% endif %}
+        {% if content.cols_lg %}{% set col_styles = col_styles ~ '--css-grid-lg-col:' ~ content.cols_lg ~ ';' %}{% endif %}
+        {% if content.cols_xl %}{% set col_styles = col_styles ~ '--css-grid-xl-col:' ~ content.cols_xl ~ ';' %}{% endif %}
+    {% endif %}
+
+    {# Gaps immer #}
+    {% set gap_styles = '' %}
+    {% if content.gap_row %}{% set gap_styles = gap_styles ~ '--css-grid-row-gap:' ~ content.gap_row ~ ';' %}{% endif %}
+    {% if content.gap_col %}{% set gap_styles = gap_styles ~ '--css-grid-col-gap:' ~ content.gap_col ~ ';' %}{% endif %}
+
+    {% set style_attr = col_styles ~ gap_styles %}
+    <div class="block--css-grid {{ content.attr_class|default('') }}"
+         {% if style_attr %}style="{{ style_attr }}"{% endif %}
+         data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% if content.blocks|default([]) %}
+            {% for block in content.blocks %}
+                {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                    content: block,
+                    view: view.blocks[loop.index0],
+                } %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

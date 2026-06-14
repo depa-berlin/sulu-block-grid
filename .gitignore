@@ -1,0 +1,12 @@
+/vendor/
+/.env.local
+/.env.*.local
+.DS_Store
+*.swp
+*.swo
+*~
+.phpunit.result.cache
+.phpunit.cache
+.phpstan.cache
+/var/
+/composer.lock

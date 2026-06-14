@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--grid-col</key>
+    <meta>
+        <title lang="en">Col -</title>
+        <title lang="de">Col -</title>
+    </meta>
+
+    <properties>
+        <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+        <block name="blocks" default-type="block--content-text" minOccurs="0">
+            <meta>
+                <title lang="en">Sub Blocks</title>
+                <title lang="de">Sub Blocks</title>
+            </meta>
+            <params>
+                <param name="block_id_generator" value="true"/>
+            </params>
+            <types>
+                <type ref="block--content-title" />
+                <type ref="block--content-lead" />
+                <type ref="block--content-lead-html"/>
+                <type ref="block--content-html" />
+                <type ref="block--content-text" />
+                <type ref="block--content-image" />
+                <type ref="block--content-inline-svg" />
+                <type ref="block--image-card" />
+                <type ref="block--content-headline"/>
+                <type ref="block--content-video"/>
+                <type ref="block--content-form" />
+                <type ref="block--seminar-list" />
+                <type ref="block--articles-block-list" />
+                <type ref="block--articles-block-navi" />
+                <type ref="block--contacts-item" />
+                <type ref="block--content-box"/>
+            </types>
+        </block>
+    </properties>
+</template>

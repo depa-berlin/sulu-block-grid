@@ -1,0 +1,21 @@
+{% block grid_grid_three_col_snippet %}
+    {% set block_id = content._id|default %}
+    <div class="block--grid-three-col {{ content.attr_class }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+        {% for block in content.blocks|default([]) %}
+            <div>
+                {% set blockLoop = loop %}
+                {% for snippet in block.snippets|default([]) %}
+                    {% set snippetLoop = loop %}
+                    {% if snippet.blocks|default([]) %}
+                        {% for innerBlock in snippet.blocks %}
+                            {% include 'includes/blocks/' ~ innerBlock.type ~ '.html.twig' with {
+                                content: innerBlock,
+                                view: view.blocks[blockLoop.index0].snippets[snippetLoop.index0].blocks[loop.index0],
+                            } %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

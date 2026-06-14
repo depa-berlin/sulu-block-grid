@@ -1,0 +1,33 @@
+{% set block_id = content._id|default %}
+<div class="block--grid-row-3col {{ content.attr_class|default('') }}" data-cms-block-id="{{ block_id }}" {{ sulu_block_preview(content) }}>
+    <div {% if content.col1_attr_class|default %}class="{{ content.col1_attr_class }}"{% endif %}>
+        {% if content.col1_blocks|default([]) %}
+            {% for block in content.col1_blocks %}
+                {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                    content: block,
+                    view: view.col1_blocks[loop.index0],
+                } %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div {% if content.col2_attr_class|default %}class="{{ content.col2_attr_class }}"{% endif %}>
+        {% if content.col2_blocks|default([]) %}
+            {% for block in content.col2_blocks %}
+                {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                    content: block,
+                    view: view.col2_blocks[loop.index0],
+                } %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div {% if content.col3_attr_class|default %}class="{{ content.col3_attr_class }}"{% endif %}>
+        {% if content.col3_blocks|default([]) %}
+            {% for block in content.col3_blocks %}
+                {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                    content: block,
+                    view: view.col3_blocks[loop.index0],
+                } %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

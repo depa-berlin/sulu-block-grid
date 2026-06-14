@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--grid-row-2col</key>
+    <meta>
+        <title lang="en">Row 2 Col</title>
+        <title lang="de">Row 2 Col</title>
+    </meta>
+
+    <properties>
+        <property name="comment" type="text_line">
+            <meta>
+                <title lang="en">Description</title>
+                <title lang="de">Beschreibung</title>
+            </meta>
+            <tag name="sulu.block_preview" priority="512"/>
+        </property>
+        <property name="attr_class" type="config_line">
+            <meta>
+                <title lang="en">CSS Klassen Row-Element</title>
+                <title lang="de">CSS Klassen Row-Element</title>
+            </meta>
+        </property>
+        <section name="col1">
+            <meta>
+                <title lang="en">Col 1</title>
+                <title lang="de">Col 1</title>
+            </meta>
+            <properties>
+
+                <property name="col1_attr_class" type="text_line" >
+                    <meta>
+                        <title lang="en">CSS classes</title>
+                        <title lang="de">CSS Klassen</title>
+                    </meta>
+                </property>
+                <block name="col1_blocks" default-type="block--content-html" minOccurs="0">
+                    <meta>
+                        <title lang="en">Content</title>
+                        <title lang="de">Inhalte</title>
+                    </meta>
+
+                    <params>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="block--content-html"/>
+                        <type ref="block--content-text"/>
+                        <type ref="block--content-lead"/>
+                        <type ref="block--content-lead-html"/>
+                        <type ref="block--content-title"/>
+                        <type ref="block--content-title-icon"/>
+                        <type ref="block--content-image"/>
+                        <type ref="block--content-inline-svg" />
+                        <type ref="block--content-button"/>
+                        <type ref="block--content-button-content"/>
+                        <type ref="block--content-button-multiline"/>
+                        <type ref="block--content-video"/>
+                        <type ref="block--content-headline"/>
+                        <type ref="block--content-list"/>
+                        <type ref="block--content-form" />
+                        <type ref="block--content-asset-container"/>
+                        <type ref="block--image-card" />
+                        <type ref="block--content-box"/>
+                    </types>
+                </block>
+            </properties>
+        </section>
+
+        <section name="col2">
+            <meta>
+                <title lang="en">Col 2</title>
+                <title lang="de">Col 2</title>
+            </meta>
+            <properties>
+                <property name="col2_attr_class" type="text_line" >
+                    <meta>
+                        <title lang="en">CSS classes</title>
+                        <title lang="de">CSS Klassen</title>
+                    </meta>
+                </property>
+                <block name="col2_blocks" default-type="block--content-html" minOccurs="0">
+                    <meta>
+                        <title lang="en">Content</title>
+                        <title lang="de">Inhalte</title>
+                    </meta>
+
+                    <params>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="block--content-html"/>
+                        <type ref="block--content-text"/>
+                        <type ref="block--content-lead"/>
+                        <type ref="block--content-lead-html"/>
+                        <type ref="block--content-title"/>
+                        <type ref="block--content-title-icon"/>
+                        <type ref="block--content-image"/>
+                        <type ref="block--content-inline-svg" />
+                        <type ref="block--content-button"/>
+                        <type ref="block--content-button-multiline"/>
+                        <type ref="block--content-video"/>
+                        <type ref="block--content-headline"/>
+                        <type ref="block--content-list"/>
+                        <type ref="block--content-form" />
+                        <type ref="block--content-asset-container"/>
+                        <type ref="block--image-card" />
+                        <type ref="block--content-box"/>
+                    </types>
+                </block>
+            </properties>
+        </section>
+    </properties>
+</template>

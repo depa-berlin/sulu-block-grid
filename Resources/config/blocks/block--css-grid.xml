@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--css-grid</key>
+    <meta>
+        <title lang="en">CSS grid</title>
+        <title lang="de">CSS Grid</title>
+    </meta>
+    <properties>
+        <section name="grid_items">
+            <meta>
+                <title lang="en">Grid items</title>
+                <title lang="de">Grid-Elemente</title>
+            </meta>
+
+            <properties>
+                <block name="blocks" default-type="block--content-box" minOccurs="0">
+
+                    <params>
+                        <param name="add_button_text">
+                            <meta>
+                                <title lang="en">Add grid item</title>
+                                <title lang="de">Grid-Element hinzufügen</title>
+                            </meta>
+                        </param>
+                        <param name="block_id_generator" value="true"/>
+                    </params>
+                    <types>
+                        <type ref="block--feature-icon"/>
+                        <type ref="block--content-box"/>
+                        <type ref="block--content-image"/>
+                        <type ref="block--card-icon"/>
+                        <type ref="block--card-project"/>
+                        <type ref="block--image-card" />
+                    </types>
+                </block>
+
+            </properties>
+        </section>
+        <section name="grid_col">
+            <meta>
+                <title lang="en">Grid cols</title>
+                <title lang="de">Grid-Spalten</title>
+            </meta>
+            <properties>
+                <property name="override_layout" type="checkbox">
+                    <meta>
+                        <title lang="de">Anzahl der Spalten überschreiben</title>
+                        <title lang="en">Overwrite number of columns</title>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                    </params>
+                </property>
+
+                <!-- Default: unter 576px -->
+                <property name="cols_default" type="number" visibleCondition="__parent.override_layout == true">
+                    <meta>
+                        <title lang="de">Spalten unter 576px (Mobil)</title>
+                        <title lang="en">Columns below 576px (mobile)</title>
+                    </meta>
+                    <params>
+                        <param name="min" value="1"/>
+                        <param name="max" value="6"/>
+                    </params>
+                </property>
+
+                <!-- sm: ≥ 576px -->
+                <property name="cols_sm" type="number" visibleCondition="__parent.override_layout == true">
+                    <meta>
+                        <title lang="de">Spalten ab 576px (sm)</title>
+                        <title lang="en">Columns from 576px (sm)</title>
+                    </meta>
+                    <params>
+                        <param name="min" value="1"/>
+                        <param name="max" value="6"/>
+                    </params>
+                </property>
+
+                <!-- md: ≥ 768px -->
+                <property name="cols_md" type="number" visibleCondition="__parent.override_layout == true">
+                    <meta>
+                        <title lang="de">Spalten ab 768px (md)</title>
+                        <title lang="en">Columns from 768px (md)</title>
+                    </meta>
+                    <params>
+                        <param name="min" value="1"/>
+                        <param name="max" value="6"/>
+                    </params>
+                </property>
+
+                <!-- lg: ≥ 992px -->
+                <property name="cols_lg" type="number" visibleCondition="__parent.override_layout == true">
+                    <meta>
+                        <title lang="de">Spalten ab 992px (lg)</title>
+                        <title lang="en">Columns from 992px (lg)</title>
+                    </meta>
+                    <params>
+                        <param name="min" value="1"/>
+                        <param name="max" value="6"/>
+                    </params>
+                </property>
+
+                <!-- xl: ≥ 1200px -->
+                <property name="cols_xl" type="number" visibleCondition="__parent.override_layout == true">
+                    <meta>
+                        <title lang="de">Spalten ab 1200px (xl)</title>
+                        <title lang="en">Columns from 1200px (xl)</title>
+                    </meta>
+                    <params>
+                        <param name="min" value="1"/>
+                        <param name="max" value="6"/>
+                    </params>
+                </property>
+
+            </properties>
+        </section>
+        <section name="grid_layout">
+            <meta>
+                <title lang="en">Grid layout</title>
+                <title lang="de">Grid-Layout</title>
+            </meta>
+            <properties>
+                <property name="gap_row" type="text_line">
+                    <meta>
+                        <title lang="de">Abstand zwischen Zeilen (z.B. 1rem)</title>
+                        <title lang="en">Row spacing (e.g. 1rem)</title>
+                    </meta>
+                </property>
+
+                <property name="gap_col" type="text_line">
+                    <meta>
+                        <title lang="de">Abstand zwischen Spalten (z.B. 1rem)</title>
+                        <title lang="en">Column spacing (e.g. 1rem)</title>
+                    </meta>
+                </property>
+                <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</template>

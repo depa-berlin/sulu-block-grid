@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <key>block--grid-three-col</key>
+    <meta>
+        <title lang="en">Col</title>
+        <title lang="de">Col</title>
+    </meta>
+
+    <properties>
+        <xi:include href="../_fragments/attr_class.xml" xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
+                      xpointer(/sulu:properties/*)"/>
+        <block name="blocks" default-type="block--image-card" minOccurs="3" maxOccurs="3">
+            <meta>
+                <title lang="en">Sub Blocks</title>
+                <title lang="de">Sub Blocks</title>
+            </meta>
+            <params>
+                <param name="block_id_generator" value="true"/>
+            </params>
+            <types>
+                <type ref="block--image-card" />
+            </types>
+
+        </block>
+    </properties>
+</template>

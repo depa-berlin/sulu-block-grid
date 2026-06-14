@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <section name="config_image">
+        <meta>
+            <title lang="en">Config for images</title>
+            <title lang="de">Einstellungen für Bilder</title>
+        </meta>
+
+        <properties>
+            <property name="enable_x2" type="checkbox" colspan="6">
+                <meta>
+                    <title lang="en">Enable Retina/2x images</title>
+                    <title lang="de">Retina/2x Bilder aktivieren</title>
+                </meta>
+                <params>
+                    <param name="type" value="toggler"/>
+                    <param name="default_value" value="false"/>
+                </params>
+            </property>
+
+            <property name="loading" type="single_select" colspan="6">
+                <meta>
+                    <title lang="en">Loading images</title>
+                    <title lang="de">Laden von Bildern</title>
+                </meta>
+
+                <params>
+                    <param name="default_value" value="lazy"/>
+
+                    <param name="values" type="collection">
+                        <param name="lazy">
+                            <meta>
+                                <title lang="en">lazy</title>
+                                <title lang="de">auf dem letzten Drücker</title>
+                            </meta>
+                        </param>
+
+                        <param name="eager">
+                            <meta>
+                                <title lang="en">eager</title>
+                                <title lang="de">bevorzugt</title>
+                            </meta>
+                        </param>
+                    </param>
+                </params>
+            </property>
+            <property name="fetchpriority_high" type="checkbox">
+                <meta>
+                    <title lang="en">Fetch priority high</title>
+                    <title lang="de">Hohe Ladepriorität</title>
+                    <info_text lang="en">Activate this option if the image is the first one on the page. The image will then be assigned the attribute 'fetchpriority="high"', telling the browser to load it with higher priority. This can help improve the Largest Contentful Paint (LCP).</info_text>
+                    <info_text lang="de">Setze diese Option, wenn das Bild das erste Bild auf der Seite ist. Diesem Bild wird dann das Attribut 'fetchpriority="high"' hinzugefügt, was dem Browser mitteilt, dass das Bild mit höherer Priorität geladen werden soll, was den Largest Contentful Paint (LCP) verbessern kann.</info_text>
+
+                </meta>
+                <params>
+                    <param name="type" value="toggler"/>
+                    <param name="default_value" value="false"/>
+                </params>
+            </property>
+            <property name="is_decorative" type="checkbox">
+                <meta>
+                    <title lang="en">Mark images as decorative</title>
+                    <title lang="de">Bilder als ausschließlich dekorativ kennzeichen</title>
+                    <info_text lang="en">When this option is enabled, the image information will not be read out by screen readers. This means that the "alt" and "title" tags will remain empty.</info_text>
+                    <info_text lang="de">Wenn diese Option eingeschaltet ist, werden die Bildinformationen nicht von Screenreadern vorgelesen, das heißt, der "alt"-Tag und "title"-Tag bleiben leer.</info_text>
+                </meta>
+                <params>
+                    <param name="type" value="toggler"/>
+                    <param name="default_value" value="false"/>
+                </params>
+            </property>
+        </properties>
+    </section>
+</properties>
