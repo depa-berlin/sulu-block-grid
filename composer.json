@@ -6,7 +6,8 @@
     "require": {
         "php": "^8.2",
         "symfony/framework-bundle": "^7.0",
-        "depa/sulu-block-helper": "@dev"
+        "depa/sulu-block-helper": "@dev",
+        "depa/sulu-block-content": "@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.0",
@@ -17,6 +18,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/depa-berlin/sulu-block-helper"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/depa-berlin/sulu-block-content"
         }
     ],
     "autoload": {
