@@ -15,7 +15,7 @@ class SuluBlockGridExtension extends AbstractBlockExtension
 
     protected function getPackageName(): string
     {
-        return 'depa-berlin/sulu-block-grid';
+        return 'depa/sulu-block-grid';
     }
 
     protected function getMetadataParameterName(): string
