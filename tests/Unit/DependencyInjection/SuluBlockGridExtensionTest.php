@@ -49,7 +49,7 @@ class SuluBlockGridExtensionTest extends TestCase
         $this->extension->load([], $this->container);
         $meta = $this->container->getParameter('sulu_block_grid.bundle_metadata');
         self::assertIsArray($meta);
-        self::assertSame('depa-berlin/sulu-block-grid', $meta['package']);
+        self::assertSame('depa/sulu-block-grid', $meta['package']);
     }
 
     public function testBundleMetadataContainsAtLeastOneBlock(): void
