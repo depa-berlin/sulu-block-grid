@@ -1,0 +1,18 @@
+section:
+    - block--grid-row
+    - block--grid-col
+    - block--grid-three-col
+    - block--grid-three-col-snippet
+    - block--grid-row-1col
+    - block--grid-row-2col
+    - block--grid-row-3col
+    - block--css-grid
+
+container:
+    - block--grid-row
+    - block--grid-col
+    - block--grid-three-col
+    - block--grid-three-col-snippet
+    - block--grid-row-1col
+    - block--grid-row-2col
+    - block--grid-row-3col
