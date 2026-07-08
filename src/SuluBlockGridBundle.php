@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Depa\SuluBlockGridBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Depa\SuluBlockHelperBundle\AbstractBlockBundle;
 
-class SuluBlockGridBundle extends Bundle
+class SuluBlockGridBundle extends AbstractBlockBundle
 {
 }
