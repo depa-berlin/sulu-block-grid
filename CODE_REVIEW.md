@@ -41,7 +41,7 @@ Das gesamte Template besteht aus einer Kommentarzeile (`{# block--grid-three-col
 ```
 mit einem PAT/App-Token mit Lesezugriff auf beide Repos.
 
-### H3 — `Bundle::getPath()` zeigt auf `src/`, Ressourcen liegen im Root
+### ~~H3 — `Bundle::getPath()` zeigt auf `src/`, Ressourcen liegen im Root~~ ✅ Erledigt
 **Datei:** `src/SuluBlockGridBundle.php:9`
 
 Die Klasse erbt von `Bundle` ohne `getPath()`-Override → `getPath()` liefert `.../sulu-block-grid/src`. Templates/Configs liegen aber unter `.../sulu-block-grid/Resources/...`. Der von TwigBundle automatisch registrierte Namespace `@SuluBlockGrid` zeigt damit auf das nicht existierende `src/Resources/views`; jede Komponente, die `$bundle->getPath().'/Resources/...'` nutzt, findet nichts. Das funktioniert nur, solange `AbstractBlockExtension` alle Pfade selbst über die Extension-Klasse auflöst — ein latenter Konventionsbruch.
@@ -53,6 +53,11 @@ public function getPath(): string
     return \dirname(__DIR__);
 }
 ```
+
+**Erledigt (2026-07-08, überholt statt gefixt):** Statt des vorgeschlagenen manuellen Overrides
+wurde das ganze Bundle auf Symfonys `AbstractBundle` + flache Struktur migriert
+(`Resources/` → `config/`, `templates/`); `getPath()` liefert dadurch automatisch den
+Paket-Root. Verifiziert: `(new SuluBlockGridBundle())->getPath()` gibt den Repo-Root zurück.
 
 ---
 
@@ -117,12 +122,21 @@ Redakteure können denselben Inhaltstyp je nach Spaltenzahl mal wählen, mal nic
 
 **Fix:** auf `dev-main` pinnen oder Tags/Branch-Aliase einführen (`^1.0@dev`).
 
-### M9 — Kritische Extension-Pfade ungetestet
+### ~~M9 — Kritische Extension-Pfade ungetestet~~ ✅ Erledigt/verlagert
 **Datei:** `tests/Unit/DependencyInjection/SuluBlockGridExtensionTest.php`
 
 Getestet wird nur der `bundle_metadata`-Parameter nach `load()`. Ungetestet: `prepend()` (Kernstück — Registrierung der Twig-Pfade, ohne die die relativen Includes `includes/blocks/...` nicht funktionieren), `getAlias()` (hängt nach `07ba9f6` rein an der Klassennamens-Konvention) und `getContainerExtension()`.
 
 **Fix:** drei Tests ergänzen: Alias-Assertion, `getContainerExtension()`-Instanz-Check, `prepend()`-Test gegen `$container->getExtensionConfig('twig')`.
+
+**Erledigt/verlagert (2026-07-08):** Grid hat keine eigene Extension-Klasse mehr (AbstractBundle-Migration).
+Die komplette `prepend()`/Twig-Pfad-Logik liegt zentral in `AbstractBlockBundle` (Repo `sulu-block-helper`)
+und wird dort getestet (`testPrependRegistersTwigPathWhenTwigIsAvailable`,
+`testTwigPathPointsToExistingDirectory`). `getAlias()`-Äquivalent (`getBlockAlias()`, aus dem
+Bundle-Klassennamen abgeleitet) verifiziert: `sulu_block_grid.bundle_metadata` löst korrekt zu
+`{"bundle":"SuluBlockGridBundle","package":"depa/sulu-block-grid",...}` auf. Grids eigene
+`SuluBlockGridBundleTest.php` deckt weiterhin ab, dass die Block-Metadaten korrekt aus dem
+eigenen `config/blocks/` geladen werden.
 
 ---
 
