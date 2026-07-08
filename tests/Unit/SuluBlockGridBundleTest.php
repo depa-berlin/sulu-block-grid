@@ -16,6 +16,10 @@ class SuluBlockGridBundleTest extends TestCase
     protected function setUp(): void
     {
         $this->container = new ContainerBuilder();
+        // AbstractBundle's internal BundleExtension needs these to build the
+        // ContainerConfigurator passed to prependExtension()/loadExtension().
+        $this->container->setParameter('kernel.environment', 'test');
+        $this->container->setParameter('kernel.build_dir', sys_get_temp_dir());
         $this->bundle = new SuluBlockGridBundle();
     }
 
