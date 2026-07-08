@@ -46,3 +46,36 @@ jobs:
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse -c phpstan.neon --no-progress
+
+  sync-fragments:
+    name: _fragments in sync with helper
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out sulu-block-helper (canonical fragments)
+        uses: actions/checkout@v4
+        with:
+          repository: depa-berlin/sulu-block-helper
+          ref: main
+          path: .helper
+
+      - name: Verify config/_fragments match the helper
+        run: |
+          rc=0
+          for f in config/_fragments/*.xml; do
+            name=$(basename "$f")
+            canonical=".helper/config/_fragments/$name"
+            if [ ! -f "$canonical" ]; then
+              echo "::error file=$f::'$name' has no counterpart in sulu-block-helper/config/_fragments — not a shared fragment"
+              rc=1
+              continue
+            fi
+            if ! diff -u "$canonical" "$f"; then
+              echo "::error file=$f::'$name' has drifted from sulu-block-helper's canonical copy — re-sync it"
+              rc=1
+            fi
+          done
+          if [ "$rc" -eq 0 ]; then echo "All config/_fragments/*.xml are in sync with sulu-block-helper."; fi
+          exit $rc
